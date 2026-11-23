@@ -190,7 +190,7 @@ with col_h1:
     st.title("🦊 Colbún Explorer AR")
     st.subheader("📊 Panel de Métricas de Satisfacción - Recorrido Sendero Túnel")
 with col_h2:
-    if st.button("🔄 Actualizar Datos", use_container_width=True):
+    if st.button("🔄 Actualizar Datos", width='stretch'):
         st.rerun()
 
 # Banner de estado de la red local
@@ -277,7 +277,7 @@ else:
             range_x=[0.5, 5.5]
         )
         fig_notas.update_layout(xaxis=dict(tickmode='linear', tick0=1, dtick=1), showlegend=False)
-        st.plotly_chart(fig_notas, use_container_width=True)
+        st.plotly_chart(fig_notas, width='stretch')
 
     with c_graf2:
         st.subheader("📱 Proporción por Plataforma")
@@ -288,7 +288,7 @@ else:
             color_discrete_map={"Android": "#3DDC84", "iOS": "#A2AAAD"},
             hole=0.4
         )
-        st.plotly_chart(fig_plat, use_container_width=True)
+        st.plotly_chart(fig_plat, width='stretch')
 
     st.markdown("---")
     
@@ -296,7 +296,7 @@ else:
     st.subheader("📋 Registro Detallado de Respuestas en Vivo")
     st.dataframe(
         df[["id", "fecha", "usuario", "plataforma", "estacion", "nota", "comentario"]],
-        use_container_width=True,
+        width='stretch',
         hide_index=True
     )
 
