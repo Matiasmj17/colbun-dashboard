@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+encuestas_central.db
+.streamlit/
