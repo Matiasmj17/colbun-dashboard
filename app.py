@@ -163,10 +163,10 @@ st.set_page_config(
 # Encabezado
 col_h1, col_h2 = st.columns([3, 1])
 with col_h1:
-    st.title("🦊 Colbún Explorer AR")
-    st.subheader("📊 Métricas de Encuestas de Visitantes (App Android)")
+    st.title("Colbún Explorer AR")
+    st.subheader("Métricas de Encuestas de Visitantes (App Android)")
 with col_h2:
-    if st.button("🔄 Actualizar Datos", width='stretch'):
+    if st.button("Actualizar Datos", width='stretch'):
         st.rerun()
 
 # Banner de conexión local
@@ -194,8 +194,8 @@ with st.sidebar:
             st.rerun()
 
     st.markdown("---")
-    st.write("### ⚠️ Reiniciar Base de Datos")
-    if st.button("🗑️ Limpiar Encuestas"):
+    st.write("### Reiniciar Base de Datos")
+    if st.button("Limpiar Encuestas"):
         limpiar_encuestas()
         st.warning("Base de datos reiniciada a cero.")
         st.rerun()
@@ -221,9 +221,9 @@ else:
         estrellas = "⭐" * int(round(promedio_nota))
         st.metric(label="⭐ Satisfacción Promedio", value=f"{promedio_nota:.1f} / 5.0", delta=estrellas)
     with m3:
-        st.metric(label="📍 Comuna / Origen Frecuente", value=comuna_top)
+        st.metric(label="Comuna / Origen Frecuente", value=comuna_top)
     with m4:
-        st.metric(label="🎂 Grupo Etario Principal", value=edad_top)
+        st.metric(label="Grupo Etario Principal", value=edad_top)
 
     st.markdown("---")
 
@@ -231,7 +231,7 @@ else:
     c_graf1, c_graf2 = st.columns(2)
     
     with c_graf1:
-        st.subheader("⭐ Distribución de Calificaciones")
+        st.subheader("Distribución de Calificaciones")
         distribucion = df["nota"].value_counts().reset_index()
         distribucion.columns = ["Nota", "Cantidad"]
         fig_notas = px.bar(
@@ -247,7 +247,7 @@ else:
         st.plotly_chart(fig_notas, width='stretch')
 
     with c_graf2:
-        st.subheader("📍 Procedencia de los Visitantes")
+        st.subheader("Procedencia de los Visitantes")
         fig_origen = px.pie(
             df,
             names="origen",
@@ -258,7 +258,7 @@ else:
 
     c_graf3, c_graf4 = st.columns(2)
     with c_graf3:
-        st.subheader("🎂 Rangos de Edad de Visitantes")
+        st.subheader("Rangos de Edad de Visitantes")
         fig_edad = px.bar(
             df["edad"].value_counts().reset_index(),
             x="edad",
@@ -270,7 +270,7 @@ else:
         st.plotly_chart(fig_edad, width='stretch')
 
     with c_graf4:
-        st.subheader("💬 Últimos Comentarios Recibidos")
+        st.subheader("Últimos Comentarios Recibidos")
         comentarios_recientes = df[df["comentario"].str.strip() != ""]["comentario"].head(4)
         if comentarios_recientes.empty:
             st.info("Aún no hay comentarios de texto escritos.")
@@ -281,7 +281,7 @@ else:
     st.markdown("---")
 
     # Tabla en vivo
-    st.subheader("📋 Registro Detallado de Respuestas")
+    st.subheader("Registro Detallado de Respuestas")
     st.dataframe(
         df[["id", "fecha", "origen", "edad", "nota", "comentario"]],
         width='stretch',
@@ -291,7 +291,7 @@ else:
     # Botón para descargar informe en CSV
     csv_bytes = df.to_csv(index=False).encode('utf-8')
     st.download_button(
-        label="📥 Descargar Informe Completo (CSV)",
+        label="Descargar Informe Completo (CSV)",
         data=csv_bytes,
         file_name=f"informe_encuestas_colbun_{datetime.now().strftime('%Y%m%d_%H%M')}.csv",
         mime="text/csv"
